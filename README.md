@@ -15,6 +15,7 @@ A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention 
 *(Note: pre-existing rules and any other policy changes remain intact)*
 
 ## TODO
+* Allow selecting specific rules to add instead of always adding all rules at once.
 * Add support for policy .xml files containing multiple policies in one file.
 * Integrate with Web API and/or OpenDXL to download policies from ePO<sup>1</sup>.
 
