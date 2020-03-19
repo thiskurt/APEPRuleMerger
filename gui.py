@@ -38,7 +38,31 @@ def open_file(txt, lst):
 # Source policy specific: open_file and save policy in global variable
 def open_source(txt, lst):
     global source_policy
-    source_policy = open_file(txt, lst)
+    # source_policy = open_file(txt, lst)
+
+    file = filedialog.askopenfile(mode='r', filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
+    txt.delete(1.0, tkinter.END)
+    lst.delete(1.0, tkinter.END)
+
+    if file is not None:
+        # Create EpoPolicy Object from .xml
+        policy = EpoPolicy(file.name)
+        # Populate policy name textbox
+        policy_info = policy.server_id + ">" + policy.policy_name + " (" + os.path.basename(file.name) + ")"
+        txt.insert(tkinter.END, policy_info)
+        # Populate textbox with Custom Rules
+        if len(policy.custom_settings) == 0:
+            lst.insert(tkinter.END, "No Custom Rules Found")
+        else:
+            for rule in policy.custom_settings:
+                # Create checkbox for every rule
+                cb = tkinter.Checkbutton(text=EpoPolicy.get_rule_name(rule), bg="white")
+                cb.select()
+                # Insert in textbox
+                lst.window_create(tkinter.END, window=cb)
+                lst.insert(tkinter.END, "\n")
+
+        source_policy = policy
 
 
 # Destination policy specific: open_file and save policy in global variable
@@ -86,8 +110,12 @@ def main():
     txt_source = tkinter.Text(window)
     txt_destination = tkinter.Text(window)
 
-    lst_source_rule = tkinter.Listbox(window)
+    # lst_source_rule = tkinter.Listbox(window)
+    lst_source_rule = tkinter.Text(window)
     lst_destination_rule = tkinter.Listbox(window)
+
+    sb_source = tkinter.Scrollbar(window)
+    sb_destination = tkinter.Scrollbar(window)
 
     btn_source = tkinter.Button(window, text="Load File")
     btn_destination = tkinter.Button(window, text="Load File")
@@ -111,12 +139,20 @@ def main():
     lbl_source_rule.grid(row=3, column=0, padx=5, pady=5, sticky=tkinter.W)
 
     lst_source_rule.grid(row=4, column=0, padx=5, pady=5, columnspan=4)
-    lst_source_rule.configure(width=90)
+    lst_source_rule.configure(width=67, height=10)
+    lst_source_rule.configure(yscrollcommand=sb_source.set)
+
+    sb_source.grid(row=4, column=4, sticky=tkinter.NS)
+    sb_source.configure(command=lst_source_rule.yview)
 
     lbl_destination_rule.grid(row=5, column=0, padx=5, pady=5, sticky=tkinter.W)
 
     lst_destination_rule.grid(row=6, column=0, padx=5, pady=5, columnspan=4)
     lst_destination_rule.configure(width=90)
+    lst_destination_rule.configure(yscrollcommand=sb_destination.set)
+
+    sb_destination.grid(row=6, column=4, sticky=tkinter.NS)
+    sb_destination.configure(command=lst_source_rule.yview)
 
     btn_merge.grid(row=7, column=3, padx=5, pady=5, sticky=tkinter.E)
 
