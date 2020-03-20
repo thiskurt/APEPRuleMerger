@@ -1,5 +1,5 @@
 ## Info
-v0.4.7 - kurt.sels@secutec.be
+v0.4.8 - kurt.sels@secutec.be
 
 ## Description
 A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention rules from one policy into another.
@@ -20,3 +20,6 @@ A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention 
 * Integrate with Web API and/or OpenDXL to download policies from ePO<sup>1</sup>.
 
 <sup>1</sup>*Requires multiple policies in one file support.*
+
+## Changelog
+0.4.8 - GUI ready for selecting which rules to merge; functionality not in logic code yet.

@@ -1,5 +1,5 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - GUI
-# v0.4.7 - 2020/01/13 - kurt.sels@secutec.be
+# v0.4.8 - 2020/03/20 - kurt.sels@secutec.be
 import tkinter
 import tkinter.ttk
 import tkinter.filedialog as filedialog
@@ -16,8 +16,6 @@ destination_policy = None
 # Read a Policy XML file & load the rules into a listbox and the name into a textbox
 def open_file(txt, lst):
     file = filedialog.askopenfile(mode='r', filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
-    txt.delete(1.0, tkinter.END)
-    lst.delete(0, tkinter.END)
 
     if file is not None:
         # Create EpoPolicy Object from .xml
@@ -25,50 +23,45 @@ def open_file(txt, lst):
         # Populate policy name textbox
         policy_info = policy.server_id + ">" + policy.policy_name + " (" + os.path.basename(file.name) + ")"
         txt.insert(tkinter.END, policy_info)
-        # Populate listbox with Custom Rule names
-        if len(policy.custom_settings) == 0:
-            lst.insert(tkinter.END, "No Custom Rules Found")
-        else:
-            for rule in policy.custom_settings:
-                lst.insert(tkinter.END, EpoPolicy.get_rule_name(rule))
 
         return policy
 
 
 # Source policy specific: open_file and save policy in global variable
 def open_source(txt, lst):
-    global source_policy
-    # source_policy = open_file(txt, lst)
-
-    file = filedialog.askopenfile(mode='r', filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
     txt.delete(1.0, tkinter.END)
     lst.delete(1.0, tkinter.END)
 
-    if file is not None:
-        # Create EpoPolicy Object from .xml
-        policy = EpoPolicy(file.name)
-        # Populate policy name textbox
-        policy_info = policy.server_id + ">" + policy.policy_name + " (" + os.path.basename(file.name) + ")"
-        txt.insert(tkinter.END, policy_info)
-        # Populate textbox with Custom Rules
-        if len(policy.custom_settings) == 0:
-            lst.insert(tkinter.END, "No Custom Rules Found")
-        else:
-            for rule in policy.custom_settings:
-                # Create checkbox for every rule
-                cb = tkinter.Checkbutton(text=EpoPolicy.get_rule_name(rule), bg="white")
-                cb.select()
-                # Insert in textbox
-                lst.window_create(tkinter.END, window=cb)
-                lst.insert(tkinter.END, "\n")
+    global source_policy
+    source_policy = open_file(txt, lst)
 
-        source_policy = policy
+    # Populate textbox with Custom Rules
+    if len(source_policy.custom_settings) == 0:
+        lst.insert(tkinter.END, "No Custom Rules Found")
+    else:
+        for rule in source_policy.custom_settings:
+            # Create checkbox for every rule
+            cb = tkinter.Checkbutton(text=EpoPolicy.get_rule_name(rule), bg="white")
+            cb.select()
+            # Insert in textbox
+            lst.window_create(tkinter.END, window=cb)
+            lst.insert(tkinter.END, "\n")
 
 
 # Destination policy specific: open_file and save policy in global variable
 def open_destination(txt, lst):
+    txt.delete(1.0, tkinter.END)
+    lst.delete(0, tkinter.END)
+
     global destination_policy
     destination_policy = open_file(txt, lst)
+
+    # Populate listbox with Custom Rule names
+    if len(destination_policy.custom_settings) == 0:
+        lst.insert(tkinter.END, "No Custom Rules Found")
+    else:
+        for rule in destination_policy.custom_settings:
+            lst.insert(tkinter.END, EpoPolicy.get_rule_name(rule))
 
 
 # Save the combined policy to a new XML file
@@ -110,8 +103,7 @@ def main():
     txt_source = tkinter.Text(window)
     txt_destination = tkinter.Text(window)
 
-    # lst_source_rule = tkinter.Listbox(window)
-    lst_source_rule = tkinter.Text(window)
+    txt_source_rule = tkinter.Text(window)
     lst_destination_rule = tkinter.Listbox(window)
 
     sb_source = tkinter.Scrollbar(window)
@@ -138,12 +130,12 @@ def main():
 
     lbl_source_rule.grid(row=3, column=0, padx=5, pady=5, sticky=tkinter.W)
 
-    lst_source_rule.grid(row=4, column=0, padx=5, pady=5, columnspan=4)
-    lst_source_rule.configure(width=67, height=10)
-    lst_source_rule.configure(yscrollcommand=sb_source.set)
+    txt_source_rule.grid(row=4, column=0, padx=5, pady=5, columnspan=4)
+    txt_source_rule.configure(width=67, height=10)
+    txt_source_rule.configure(yscrollcommand=sb_source.set)
 
     sb_source.grid(row=4, column=4, sticky=tkinter.NS)
-    sb_source.configure(command=lst_source_rule.yview)
+    sb_source.configure(command=txt_source_rule.yview)
 
     lbl_destination_rule.grid(row=5, column=0, padx=5, pady=5, sticky=tkinter.W)
 
@@ -152,12 +144,12 @@ def main():
     lst_destination_rule.configure(yscrollcommand=sb_destination.set)
 
     sb_destination.grid(row=6, column=4, sticky=tkinter.NS)
-    sb_destination.configure(command=lst_source_rule.yview)
+    sb_destination.configure(command=lst_destination_rule.yview)
 
     btn_merge.grid(row=7, column=3, padx=5, pady=5, sticky=tkinter.E)
 
     # Widget Configuration
-    btn_source.configure(command=lambda: open_source(txt_source, lst_source_rule))
+    btn_source.configure(command=lambda: open_source(txt_source, txt_source_rule))
     btn_destination.configure(command=lambda: open_destination(txt_destination, lst_destination_rule))
     btn_merge.configure(command=lambda: save_file())
 
