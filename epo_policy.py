@@ -1,5 +1,5 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - Logic/Class
-# v0.4.7 - 2020/01/14 - kurt.sels@secutec.be
+# v0.4.9.1 - 2020/01/14 - kurt.sels@secutec.be
 import xml.etree.ElementTree as et
 
 
@@ -59,6 +59,20 @@ class EpoPolicy(object):
                     self.custom_settings.remove(own_setting)                            # Delete Custom Setting
                     try:                                                                # Delete corresponding object
                         self.custom_objects.remove(other_policy.custom_objects[index])
+                    except (ValueError, Exception):
+                        pass
+
+    # TODO Remove unwanted custom rules
+    def filter_unwanted_rules(self, unwanted_rule_names):
+        copy_custom_settings = self.custom_settings.copy()
+        copy_custom_objects = self.custom_objects.copy()
+
+        for index, setting in enumerate(copy_custom_settings):
+            for unwanted in unwanted_rule_names:
+                if EpoPolicy.get_rule_name(setting) == unwanted:
+                    self.custom_settings.remove(setting)
+                    try:
+                        self.custom_objects.remove(copy_custom_objects[index])
                     except (ValueError, Exception):
                         pass
 

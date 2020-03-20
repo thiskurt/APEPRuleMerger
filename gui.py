@@ -1,5 +1,5 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - GUI
-# v0.4.8 - 2020/03/20 - kurt.sels@secutec.be
+# v0.4.9.1 - 2020/03/20 - kurt.sels@secutec.be
 import tkinter
 import tkinter.ttk
 import tkinter.filedialog as filedialog
@@ -10,6 +10,7 @@ from epo_policy import EpoPolicy
 # Variables for policies
 source_policy = None
 destination_policy = None
+unwanted_rule_names = None
 
 
 # Function Definitions
@@ -65,13 +66,17 @@ def open_destination(txt, lst):
 
 
 # Save the combined policy to a new XML file
-def save_file():
+def save_policy():
     if source_policy is not None and destination_policy is not None:
         if source_policy.policy_type == destination_policy.policy_type:
             file = filedialog.asksaveasfile(filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
             if file is not None:
-                # Filter out rules already present & add remaining rules to the destination policy
+                # Filter out rules already present in destination
                 source_policy.filter_custom_rules(destination_policy)
+                # Filter out unwanted rules
+                # TODO add text of unselected rules to unwanted_rule_names variable
+                source_policy.filter_unwanted_rules(unwanted_rule_names)
+                # add remaining rules to the destination policy
                 destination_policy.add_custom_rules(source_policy)
 
                 # Write the combined policy to a file
@@ -151,7 +156,7 @@ def main():
     # Widget Configuration
     btn_source.configure(command=lambda: open_source(txt_source, txt_source_rule))
     btn_destination.configure(command=lambda: open_destination(txt_destination, lst_destination_rule))
-    btn_merge.configure(command=lambda: save_file())
+    btn_merge.configure(command=lambda: save_policy())
 
     window.mainloop()
 
