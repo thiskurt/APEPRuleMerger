@@ -1,16 +1,18 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - GUI
-# v0.4.9.1 - 2020/03/20 - kurt.sels@secutec.be
+# v0.5.0 - 2020/03/23 - kurt.sels@secutec.be
 import tkinter
 import tkinter.ttk
 import tkinter.filedialog as filedialog
 import tkinter.messagebox as messagebox
 import os
+from copy import deepcopy
 from epo_policy import EpoPolicy
 
 # Variables for policies
 source_policy = None
 destination_policy = None
-unwanted_rule_names = None
+all_rules_cb = []
+unwanted_rule_names = []
 
 
 # Function Definitions
@@ -42,11 +44,15 @@ def open_source(txt, lst):
     else:
         for rule in source_policy.custom_settings:
             # Create checkbox for every rule
-            cb = tkinter.Checkbutton(text=EpoPolicy.get_rule_name(rule), bg="white")
-            cb.select()
+            style = tkinter.ttk.Style()
+            style.configure('TCheckbutton', background="white")
+            cb = tkinter.ttk.Checkbutton(text=EpoPolicy.get_rule_name(rule), style="TCheckbutton")
+            cb.state(['selected', '!alternate'])
             # Insert in textbox
             lst.window_create(tkinter.END, window=cb)
             lst.insert(tkinter.END, "\n")
+            # Add to list of all rule Checkbuttons
+            all_rules_cb.append(cb)
 
 
 # Destination policy specific: open_file and save policy in global variable
@@ -65,20 +71,31 @@ def open_destination(txt, lst):
             lst.insert(tkinter.END, EpoPolicy.get_rule_name(rule))
 
 
+# Find which rules are unwanted, not checked, and add them to the variable
+def get_unwanted_rules():
+    unwanted = []
+    for cb in all_rules_cb:
+        if not cb.instate(['selected']):
+            unwanted.append(cb.cget('text'))
+    return unwanted
+
+
 # Save the combined policy to a new XML file
-def save_policy():
+def save_policy(txt_source, txt_source_rule, txt_destination, lst_destination):
     if source_policy is not None and destination_policy is not None:
         if source_policy.policy_type == destination_policy.policy_type:
             file = filedialog.asksaveasfile(filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
             if file is not None:
+                # Copy source policy to not make permanent changes
+                copy_source = deepcopy(source_policy)
                 # Filter out rules already present in destination
-                source_policy.filter_custom_rules(destination_policy)
+                copy_source.filter_custom_rules(destination_policy)
                 # Filter out unwanted rules
-                # TODO add text of unselected rules to unwanted_rule_names variable
-                source_policy.filter_unwanted_rules(unwanted_rule_names)
+                global unwanted_rule_names
+                unwanted_rule_names = get_unwanted_rules()
+                copy_source.filter_unwanted_rules(unwanted_rule_names)
                 # add remaining rules to the destination policy
-                destination_policy.add_custom_rules(source_policy)
-
+                destination_policy.add_custom_rules(copy_source)
                 # Write the combined policy to a file
                 destination_policy.file.write(file.name)
 
@@ -95,7 +112,6 @@ def main():
     # Main Window Definition
     window = tkinter.Tk()
     window.title("AP EP Rule Merger")
-    # window.iconbitmap("mcafee.ico")
     window.minsize(200, 100)
     window.resizable(False, False)
 
@@ -156,7 +172,7 @@ def main():
     # Widget Configuration
     btn_source.configure(command=lambda: open_source(txt_source, txt_source_rule))
     btn_destination.configure(command=lambda: open_destination(txt_destination, lst_destination_rule))
-    btn_merge.configure(command=lambda: save_policy())
+    btn_merge.configure(command=lambda: save_policy(txt_source, txt_source_rule, txt_destination, lst_destination_rule))
 
     window.mainloop()
 
