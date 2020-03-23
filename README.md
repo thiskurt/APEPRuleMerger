@@ -25,5 +25,5 @@ A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention 
 <sup>1</sup>*Requires multiple policies in one file support.*
 
 ## Changelog
-0.4.8 - GUI ready for selecting which rules to merge; functionality not in logic code yet.
+0.4.8 - GUI ready for selecting which rules to merge; functionality not in logic code yet.  
 0.5.0 - Allow selecting specific rules to add instead of always adding all rules.
