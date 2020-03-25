@@ -1,114 +1,15 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - GUI
-# v0.5.0 - 2020/03/23 - kurt.sels@secutec.be
+# v0.5.1 - 2020/03/25 - kurt.sels@secutec.be
 import tkinter
 import tkinter.ttk
-import tkinter.filedialog as filedialog
-import tkinter.messagebox as messagebox
-import os
-from copy import deepcopy
-from epo_policy import EpoPolicy
-
-# Variables for policies
-source_policy = None
-destination_policy = None
-all_rules_cb = []
-unwanted_rule_names = []
-
-
-# Function Definitions
-# Read a Policy XML file & load the rules into a listbox and the name into a textbox
-def open_file(txt, lst):
-    file = filedialog.askopenfile(mode='r', filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
-
-    if file is not None:
-        # Create EpoPolicy Object from .xml
-        policy = EpoPolicy(file.name)
-        # Populate policy name textbox
-        policy_info = policy.server_id + ">" + policy.policy_name + " (" + os.path.basename(file.name) + ")"
-        txt.insert(tkinter.END, policy_info)
-
-        return policy
-
-
-# Source policy specific: open_file and save policy in global variable
-def open_source(txt, lst):
-    txt.delete(1.0, tkinter.END)
-    lst.delete(1.0, tkinter.END)
-
-    global source_policy
-    source_policy = open_file(txt, lst)
-
-    # Populate textbox with Custom Rules
-    if len(source_policy.custom_settings) == 0:
-        lst.insert(tkinter.END, "No Custom Rules Found")
-    else:
-        for rule in source_policy.custom_settings:
-            # Create checkbox for every rule
-            style = tkinter.ttk.Style()
-            style.configure('TCheckbutton', background="white")
-            cb = tkinter.ttk.Checkbutton(text=EpoPolicy.get_rule_name(rule), style="TCheckbutton")
-            cb.state(['selected', '!alternate'])
-            # Insert in textbox
-            lst.window_create(tkinter.END, window=cb)
-            lst.insert(tkinter.END, "\n")
-            # Add to list of all rule Checkbuttons
-            all_rules_cb.append(cb)
-
-
-# Destination policy specific: open_file and save policy in global variable
-def open_destination(txt, lst):
-    txt.delete(1.0, tkinter.END)
-    lst.delete(0, tkinter.END)
-
-    global destination_policy
-    destination_policy = open_file(txt, lst)
-
-    # Populate listbox with Custom Rule names
-    if len(destination_policy.custom_settings) == 0:
-        lst.insert(tkinter.END, "No Custom Rules Found")
-    else:
-        for rule in destination_policy.custom_settings:
-            lst.insert(tkinter.END, EpoPolicy.get_rule_name(rule))
-
-
-# Find which rules are unwanted, not checked, and add them to the variable
-def get_unwanted_rules():
-    unwanted = []
-    for cb in all_rules_cb:
-        if not cb.instate(['selected']):
-            unwanted.append(cb.cget('text'))
-    return unwanted
-
-
-# Save the combined policy to a new XML file
-def save_policy(txt_source, txt_source_rule, txt_destination, lst_destination):
-    if source_policy is not None and destination_policy is not None:
-        if source_policy.policy_type == destination_policy.policy_type:
-            file = filedialog.asksaveasfile(filetypes=[('xml files', '*.xml'), ('all files', '*.*')])
-            if file is not None:
-                # Copy source policy to not make permanent changes
-                copy_source = deepcopy(source_policy)
-                # Filter out rules already present in destination
-                copy_source.filter_custom_rules(destination_policy)
-                # Filter out unwanted rules
-                global unwanted_rule_names
-                unwanted_rule_names = get_unwanted_rules()
-                copy_source.filter_unwanted_rules(unwanted_rule_names)
-                # add remaining rules to the destination policy
-                destination_policy.add_custom_rules(copy_source)
-                # Write the combined policy to a file
-                destination_policy.file.write(file.name)
-
-                message = "File Saved Under: " + file.name
-                messagebox.showinfo("File Saved", message)
-        else:
-            messagebox.showerror("Merge Error", "You are trying to merge apples into oranges.")
-    else:
-        messagebox.showerror("No Policy Found", "Either the source policy or the destination policy is missing.")
+import gui_controller as gc
 
 
 # Main program: Create GUI and couple functions
 def main():
+    # Controller
+    controller = gc.Controller()
+
     # Main Window Definition
     window = tkinter.Tk()
     window.title("AP EP Rule Merger")
@@ -170,9 +71,9 @@ def main():
     btn_merge.grid(row=7, column=3, padx=5, pady=5, sticky=tkinter.E)
 
     # Widget Configuration
-    btn_source.configure(command=lambda: open_source(txt_source, txt_source_rule))
-    btn_destination.configure(command=lambda: open_destination(txt_destination, lst_destination_rule))
-    btn_merge.configure(command=lambda: save_policy(txt_source, txt_source_rule, txt_destination, lst_destination_rule))
+    btn_source.configure(command=lambda: controller.open_source(txt_source, txt_source_rule))
+    btn_destination.configure(command=lambda: controller.open_destination(txt_destination, lst_destination_rule))
+    btn_merge.configure(command=lambda: controller.save_policy())
 
     window.mainloop()
 
