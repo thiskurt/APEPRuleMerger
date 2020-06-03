@@ -1,5 +1,6 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - Logic/Class
-# v0.5.0 - 2020/01/23 - kurt.sels@secutec.be
+# v0.5.2 - 2020/06/03 - kurt.sels@secutec.be
+# TODO: Clean up dirty fix for EP rule ID conflict bug
 import xml.etree.ElementTree as et
 
 
@@ -12,6 +13,7 @@ class EpoPolicy(object):
         self.server_id = "Not Found"            # Server id
         self.policy_name = "Not Found"          # Policy name
         self.policy_type = "Not Found"          # Policy type info
+        self.highest_EP_rule_id = 20000
 
         self.find_custom_rules()
 
@@ -30,6 +32,10 @@ class EpoPolicy(object):
                             self.custom_settings.append(child)
                         # For Expert rules there is no indication of it being custom except the ID starting at 20000
                         if setting.get('name') == 'SignatureID' and setting.get('value').startswith('20'):
+                            # Keep track of highest EP rule ID
+                            if int(setting.get('value')) > self.highest_EP_rule_id:
+                                self.highest_EP_rule_id = int(setting.get('value'))
+                            # Add it to the list of custom EP settings
                             self.custom_settings.append(child)
 
             # Find the matching custom AP/EP policy object by comparing its text with the custom AP setting name value
@@ -78,19 +84,25 @@ class EpoPolicy(object):
                             pass
 
     # Add the other policy(ie source policy)'s custom AP/EP rules to yourself(ie destination policy)
+    # TODO: cleanup
     def add_custom_rules(self, other):
         # Add the remaining custom AP rules from the source policy to the destination policy
         i = 0
+        j = 0
         added = False
         for child in self.file_root:
-            # Find the first AP setting
+            # Find the first AP/EP setting
             if child.tag == 'EPOPolicySettings' and not added:
                 # Add the remaining source AP/EP settings before this one
                 for custom in reversed(other.custom_settings):
+                    # TODO: Cleanup
+                    j = j + 1
+                    EpoPolicy.change_id_custom_rule(custom, j, self.highest_EP_rule_id)
+
                     self.file_root.insert(i, custom)
                 added = True
 
-            # Find the first AP Policy Object
+            # Find the first AP/EP Policy Object
             if child.tag == 'EPOPolicyObject':
                 added = False
                 for grandchild in child:
@@ -101,6 +113,14 @@ class EpoPolicy(object):
                             self.file_root[i].insert(1, custom)
                             added = True
             i = i + 1
+
+    # Change the ID of the Custom Rule to avoid duplicates
+    # TODO: cleanup
+    @classmethod
+    def change_id_custom_rule(cls, custom, j, highest_rule):
+        for setting in custom.iter('Setting'):
+            if setting.get('name') == 'SignatureID':
+                setting.set('value', str(highest_rule + j))
 
     # Return the rule name from a setting element
     @classmethod

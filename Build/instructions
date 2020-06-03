@@ -1,4 +1,2 @@
-pyinstaller --windowed --onefile gui.py --name APEPRuleMerger0.5.1.exe
-
-# CAPS!
-python -O -m PyInstaller --windowed --onefile gui.py --name APEPRuleMerger0.5.1.1.exe
+pyinstaller --windowed --onefile gui.py --name APEPRuleMerger0.5.2.exe
+python -OO -m PyInstaller --windowed --onefile gui.py --name APEPRuleMerger0.5.2.exe
