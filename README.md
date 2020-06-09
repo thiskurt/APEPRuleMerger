@@ -27,5 +27,5 @@ A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention 
 ## Changelog
 0.4.8 - GUI ready for selecting which rules to merge; functionality not in logic code yet.  
 0.5.0 - Allow selecting specific rules to add instead of always adding all rules.  
-0.5.1 - Split up gui into gui and gui_controller, pseudo-MVC
-0.5.2 - Bug fix: Prevent EP rule duplicate ID conflicts
+0.5.1 - Split up gui into gui and gui_controller, pseudo-MVC  
+0.5.2 - Bug fix: Prevent EP rule duplicate ID conflicts  
