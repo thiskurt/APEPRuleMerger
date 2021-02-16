@@ -1,5 +1,5 @@
 ## Info
-v0.5.3 - kurt.sels@secutec.be
+v0.5.5 - kurt.sels@secutec.be
 
 ## Description
 A tool allowing you to merge McAfee ENS Access Protection or Exploit Prevention rules from one policy into another.
