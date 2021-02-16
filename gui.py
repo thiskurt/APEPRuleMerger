@@ -1,5 +1,5 @@
 # User-Defined Access Protection/Exploit Prevention Rule Merger - GUI
-# v0.5.1 - 2020/03/25 - kurt.sels@secutec.be
+# v0.5.5 - 2021/02/16 - kurt.sels@secutec.be
 import tkinter
 import tkinter.ttk
 import gui_controller as gc
@@ -28,6 +28,10 @@ def main():
     txt_source_rule = tkinter.Text(window)
     lst_destination_rule = tkinter.Listbox(window)
 
+    # TODO:
+    cbb_source = tkinter.ttk.Combobox(window, values=[])
+    cbb_destination = tkinter.ttk.Combobox(window, values=[])
+
     sb_source = tkinter.Scrollbar(window)
     sb_destination = tkinter.Scrollbar(window)
 
@@ -51,6 +55,8 @@ def main():
     tsp_separator.grid(row=2, column=0, padx=5, pady=5, columnspan=4, sticky=tkinter.EW)
 
     lbl_source_rule.grid(row=3, column=0, padx=5, pady=5, sticky=tkinter.W)
+    # TODO
+    cbb_source.grid(row=3, column=1, padx=5, pady=5, columnspan=3, sticky=tkinter.E)
 
     txt_source_rule.grid(row=4, column=0, padx=5, pady=5, columnspan=4)
     txt_source_rule.configure(width=67, height=10)
@@ -60,6 +66,8 @@ def main():
     sb_source.configure(command=txt_source_rule.yview)
 
     lbl_destination_rule.grid(row=5, column=0, padx=5, pady=5, sticky=tkinter.W)
+    # TODO
+    cbb_destination.grid(row=5, column=1, padx=5, pady=5, columnspan=3, sticky=tkinter.E)
 
     lst_destination_rule.grid(row=6, column=0, padx=5, pady=5, columnspan=4)
     lst_destination_rule.configure(width=90)
@@ -70,10 +78,15 @@ def main():
 
     btn_merge.grid(row=7, column=3, padx=5, pady=5, sticky=tkinter.E)
 
+    # cbb_example.grid(row=8, column=0, padx=5, pady=5, sticky=tkinter.W)
+
     # Widget Configuration
-    btn_source.configure(command=lambda: controller.open_source(txt_source, txt_source_rule))
-    btn_destination.configure(command=lambda: controller.open_destination(txt_destination, lst_destination_rule))
+    btn_source.configure(command=lambda: controller.open_source(txt_source, txt_source_rule, cbb_source))
+    btn_destination.configure(command=lambda: controller.open_destination(txt_destination, lst_destination_rule,
+                                                                          cbb_destination))
     btn_merge.configure(command=lambda: controller.save_policy())
+
+    cbb_source.bind("<<ComboboxSelected>>", lambda x: controller.select_source_policy(cbb_source, txt_source_rule))
 
     window.mainloop()
 

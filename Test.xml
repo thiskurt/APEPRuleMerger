@@ -1,0 +1,456 @@
+<ns0:EPOPolicySchema xmlns:ns0="mcafee-epo-policy">
+<EPOPolicyVerInfo vermjr="5" vermin="10" verrel="0" verbld="0" />
+<EPOPolicySettings name="TSA Alpha Ens AP::Settings (E3FE03EC-E2B3-41DC-9434-DFB66D8F1FB9)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="Executable#0_ID" value="c117d5f3-5c31-46f9-90ad-c01ce1fc9005" />
+<Setting name="Executable#0_IncludeStatus" value="include" />
+<Setting name="Executable#0_Name" value="?:\Users\*\Documents\*.exe" />
+<Setting name="Executable#0_Notes" value="" />
+<Setting name="Executable#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="Executable#0_Parameter#0_Value" value="?:\Users\*\Documents\*.exe" />
+<Setting name="Executable#0_Parameter#1_Name" value="MD5" />
+<Setting name="Executable#0_Parameter#1_Value" value="" />
+<Setting name="Executable#0_Parameter#2_Name" value="CERT_NAME" />
+<Setting name="Executable#0_Parameter#2_Value" value="" />
+<Setting name="Executable#0_ParameterCount" value="3" />
+<Setting name="ExecutableCount" value="1" />
+<Setting name="Note" value="" />
+<Setting name="ParameterCount" value="0" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="e06e997d-fa2c-42ab-a38a-7f5c3a97e07f" />
+<Setting name="RuleName" value="Ransomware - Teslacrypt v.IV - Rule 1" />
+<Setting name="RuleType" value="Custom" />
+<Setting name="SubRule#0_Class" value="FILE" />
+<Setting name="SubRule#0_ExecutableCount" value="0" />
+<Setting name="SubRule#0_ID" value="db49887d-2ab6-4d87-b59d-97f1c7c74386" />
+<Setting name="SubRule#0_Name" value="All files" />
+<Setting name="SubRule#0_Operations" value="create" />
+<Setting name="SubRule#0_Parameter#0_ID" value="6885e350-cd8c-4f93-82c1-68fbc66e876e" />
+<Setting name="SubRule#0_Parameter#0_IncludeStatus" value="include" />
+<Setting name="SubRule#0_Parameter#0_Name" value="OBJECT_NAME" />
+<Setting name="SubRule#0_Parameter#0_Value" value="*" />
+<Setting name="SubRule#0_ParameterCount" value="1" />
+<Setting name="SubRule102Count" value="0" />
+<Setting name="SubRule105Count" value="0" />
+<Setting name="SubRuleCount" value="1" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (077A93DF-5F28-4F50-874B-73A3F019CE7A)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="MAKE_SHARES_RO" />
+<Setting name="RuleName" value="IDS_AP_RULE_MAKE_SHARES_RO" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (0A048288-97E7-43D3-81F3-DCD21178B077)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_FILES_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_FILES_TEMP" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (0B70AE57-8D4D-447E-9848-03637EF96A39)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="HIJACK_EXE" />
+<Setting name="RuleName" value="IDS_AP_RULE_HIJACK_EXE" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (180B5621-C8D9-4161-BB19-BCE47712984C)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_CREATION_WINDOWS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_WINDOWS" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (2DE72285-AA78-4AE4-8BD1-FF754DCF4C90)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_CREATION_LINK_SYSTEMFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_LINK_SYSTEMFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (2F205C41-A8F2-4EA2-888F-BBC4AC3BF71A)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_PROCESS_DOPPELGANGING_ATTACK" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PROCESS_DOPPELGANGING_ATTACK" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (3C328905-F723-498D-95B1-5E6D1A3A1F8D)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="EXE_FILES_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_EXE_FILES_TEMP" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (443CB768-2B8F-4237-A9B9-574FF130ED72)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ALTER_FILE_EXT" />
+<Setting name="RuleName" value="IDS_AP_RULE_ALTER_FILE_EXT" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (50DCFFE3-C3ED-4357-BC33-B66A5F501809)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_MODIFICATION_PASSWORDFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_MODIFICATION_PASSWORDFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (517FA23F-206B-4AA6-89AF-7752520EA7D7)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PROTECT_IE_SETTINGS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PROTECT_IE_SETTINGS" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (54B132E8-0E17-4D7B-88A5-C1CB9E25A58D)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_READ_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_DEVICES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_READ_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_DEVICES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (55E1A227-3C8E-4554-B245-2B4BE1E1031E)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="REMOTE_MODIFY" />
+<Setting name="RuleName" value="IDS_AP_RULE_REMOTE_MODIFY" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (5BFB850D-FDAD-46FE-98D0-08855C507FE6)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_CONFIGFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WRITE_DELETE_RENAME_HARDLINK_PERMISSION_OWNERSHIP_VMWARE_CONFIGFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (5F086EE4-FC82-4CF3-86A8-2E2F1C9FC99F)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ENABLE_SHARES_RW" />
+<Setting name="RuleName" value="IDS_AP_RULE_ENABLE_SHARES_RW" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (602870A5-33ED-4219-BFF3-1B64EC4983A9)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PROTECT_NETWORK_SETTINGS" />
+<Setting name="RuleName" value="IDS_AP_RULE_PROTECT_NETWORK_SETTINGS" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (7B2B454C-F415-43C5-82A1-DCFBCE1C5906)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_WSL_EXECUTION" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WSL_EXECUTION" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (7BDC5079-158E-4B9B-B058-A4BFEF40C19C)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="ALTER_USERRIGHTPOLICY" />
+<Setting name="RuleName" value="IDS_AP_RULE_ALTER_USERRIGHTPOLICY" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (7C7B8CD3-CF2B-400C-AB96-F0ADC7052EC9)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_CREATE_DELETE_RENAME_HARDLINK_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATE_DELETE_RENAME_HARDLINK_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (84DF1280-523E-4295-B313-86A196B67300)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="DISABLE_REGTASK" />
+<Setting name="RuleName" value="IDS_AP_RULE_DISABLE_REGTASK" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (8EDE7205-4C3A-4481-B73F-61EA517F1812)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_CREATION_PROGRAMFILES" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_CREATION_PROGRAMFILES" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (8F71B6C4-00F3-4A40-BB5E-EAD84AA027CC)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="INSTALL_BHO" />
+<Setting name="RuleName" value="IDS_AP_RULE_INSTALL_BHO" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (AD7FDBB0-451E-48CA-9BE5-00A00885EF13)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="CREATE_AUTORUN" />
+<Setting name="RuleName" value="IDS_AP_RULE_CREATE_AUTORUN" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (B550634A-EA69-4596-BC7E-A0B2E086EDB5)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRules">
+<Setting name="Rule_1" value="INSTALL_NEWCLSIDS|0|" />
+<Setting name="Rule_10" value="MAKE_SHARES_RO|0|" />
+<Setting name="Rule_11" value="HIJACK_EXE|0|" />
+<Setting name="Rule_12" value="SPOOF_WIN_PROCESS|0|" />
+<Setting name="Rule_13" value="PROTECT_IE_SETTINGS|0|" />
+<Setting name="Rule_14" value="INSTALL_BHO|0|" />
+<Setting name="Rule_2" value="DISABLE_REGTASK|0|" />
+<Setting name="Rule_3" value="ALTER_USERRIGHTPOLICY|0|" />
+<Setting name="Rule_4" value="ALTER_FILE_EXT|0|" />
+<Setting name="Rule_5" value="REMOTE_MODIFY|0|" />
+<Setting name="Rule_6" value="CREATE_AUTORUN|3|" />
+<Setting name="Rule_7" value="EXE_FILES_TEMP|0|" />
+<Setting name="Rule_8" value="EXE_SCRIPT_TEMP|0|" />
+<Setting name="Rule_9" value="ENABLE_SHARES_RW|0|" />
+<Setting name="dwAPRuleBlocks" value="14" />
+</Section>
+<Section name="BehaviorBlockAP">
+<Setting name="APEnabled" value="1" />
+<Setting name="szGlobalExcludedProcesses" value="" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (B5ABA44A-625B-4096-AE6C-35A2DF6B66CD)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="SPOOF_WIN_PROCESS" />
+<Setting name="RuleName" value="IDS_AP_RULE_SPOOF_WIN_PROCESS" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (B8D1BF94-9B16-47DE-BEDA-C0B41FF2F7EF)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="PREVENT_PROGRAMS_AUTORUN" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PROGRAMS_AUTORUN" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (BC374DE0-41E2-4BD6-A860-EFDFE4946D0A)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="INSTALL_NEWCLSIDS" />
+<Setting name="RuleName" value="IDS_AP_RULE_INSTALL_NEWCLSIDS" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (C46F1817-6ADA-4105-8507-F078A1D1F639)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="1" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_MIMIKATZ_CREATION" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_MIMIKATZ_CREATION" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (D5D225EA-20A7-48C9-A4E4-22535F823F6E)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_LAUNCHING_PROGRAMFILES" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_LAUNCHING_PROGRAMFILES" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (DB2D4364-0CEF-46D8-B0D5-89B7C4511CB3)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="0" />
+<Setting name="RuleID" value="EXE_SCRIPT_TEMP" />
+<Setting name="RuleName" value="IDS_AP_RULE_EXE_SCRIPT_TEMP" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (E476C932-BB42-4024-8331-CA716DA60707)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_PERMISSION_OWNERSHIP_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_PERMISSION_OWNERSHIP_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicySettings name="My Default::Settings (E979A74D-04AF-4FD7-92C1-ADB7882EB9F3)" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" typeid="EAM_BehaviorBlock_Policies" param_int="0" param_str="">
+<Section name="APLinuxRule">
+<Setting name="Block" value="0" />
+<Setting name="ExecutableCount" value="0" />
+<Setting name="Note" value="" />
+<Setting name="Report" value="1" />
+<Setting name="RuleID" value="PREVENT_WRITE_STARTUPFILES_LINUX" />
+<Setting name="RuleName" value="IDS_AP_RULE_PREVENT_WRITE_STARTUPFILES_LINUX" />
+<Setting name="RuleType" value="Canned" />
+<Setting name="SubRuleCount" value="0" />
+</Section>
+</EPOPolicySettings>
+<EPOPolicyObject name="My Default" featureid="ENDP_AM_1000" categoryid="EAM_BehaviorBlock_Policies" serverid="ELECTRA9931" editflag="0" typeid="EAM_BehaviorBlock_Policies">
+<description /><PolicySettings>My Default::Settings (077A93DF-5F28-4F50-874B-73A3F019CE7A)</PolicySettings>
+<PolicySettings>My Default::Settings (0A048288-97E7-43D3-81F3-DCD21178B077)</PolicySettings>
+<PolicySettings>My Default::Settings (0B70AE57-8D4D-447E-9848-03637EF96A39)</PolicySettings>
+<PolicySettings>My Default::Settings (180B5621-C8D9-4161-BB19-BCE47712984C)</PolicySettings>
+<PolicySettings>My Default::Settings (2DE72285-AA78-4AE4-8BD1-FF754DCF4C90)</PolicySettings>
+<PolicySettings>My Default::Settings (2F205C41-A8F2-4EA2-888F-BBC4AC3BF71A)</PolicySettings>
+<PolicySettings>My Default::Settings (3C328905-F723-498D-95B1-5E6D1A3A1F8D)</PolicySettings>
+<PolicySettings>My Default::Settings (443CB768-2B8F-4237-A9B9-574FF130ED72)</PolicySettings>
+<PolicySettings>My Default::Settings (50DCFFE3-C3ED-4357-BC33-B66A5F501809)</PolicySettings>
+<PolicySettings>My Default::Settings (517FA23F-206B-4AA6-89AF-7752520EA7D7)</PolicySettings>
+<PolicySettings>My Default::Settings (54B132E8-0E17-4D7B-88A5-C1CB9E25A58D)</PolicySettings>
+<PolicySettings>My Default::Settings (55E1A227-3C8E-4554-B245-2B4BE1E1031E)</PolicySettings>
+<PolicySettings>My Default::Settings (5BFB850D-FDAD-46FE-98D0-08855C507FE6)</PolicySettings>
+<PolicySettings>My Default::Settings (5F086EE4-FC82-4CF3-86A8-2E2F1C9FC99F)</PolicySettings>
+<PolicySettings>My Default::Settings (602870A5-33ED-4219-BFF3-1B64EC4983A9)</PolicySettings>
+<PolicySettings>My Default::Settings (7B2B454C-F415-43C5-82A1-DCFBCE1C5906)</PolicySettings>
+<PolicySettings>My Default::Settings (7BDC5079-158E-4B9B-B058-A4BFEF40C19C)</PolicySettings>
+<PolicySettings>My Default::Settings (7C7B8CD3-CF2B-400C-AB96-F0ADC7052EC9)</PolicySettings>
+<PolicySettings>My Default::Settings (84DF1280-523E-4295-B313-86A196B67300)</PolicySettings>
+<PolicySettings>My Default::Settings (8EDE7205-4C3A-4481-B73F-61EA517F1812)</PolicySettings>
+<PolicySettings>My Default::Settings (8F71B6C4-00F3-4A40-BB5E-EAD84AA027CC)</PolicySettings>
+<PolicySettings>My Default::Settings (AD7FDBB0-451E-48CA-9BE5-00A00885EF13)</PolicySettings>
+<PolicySettings>My Default::Settings (B550634A-EA69-4596-BC7E-A0B2E086EDB5)</PolicySettings>
+<PolicySettings>My Default::Settings (B5ABA44A-625B-4096-AE6C-35A2DF6B66CD)</PolicySettings>
+<PolicySettings>My Default::Settings (B8D1BF94-9B16-47DE-BEDA-C0B41FF2F7EF)</PolicySettings>
+<PolicySettings>My Default::Settings (BC374DE0-41E2-4BD6-A860-EFDFE4946D0A)</PolicySettings>
+<PolicySettings>My Default::Settings (C46F1817-6ADA-4105-8507-F078A1D1F639)</PolicySettings>
+<PolicySettings>My Default::Settings (D5D225EA-20A7-48C9-A4E4-22535F823F6E)</PolicySettings>
+<PolicySettings>My Default::Settings (DB2D4364-0CEF-46D8-B0D5-89B7C4511CB3)</PolicySettings>
+<PolicySettings>My Default::Settings (E476C932-BB42-4024-8331-CA716DA60707)</PolicySettings>
+<PolicySettings>My Default::Settings (E979A74D-04AF-4FD7-92C1-ADB7882EB9F3)</PolicySettings>
+</EPOPolicyObject>
+
+</ns0:EPOPolicySchema>
